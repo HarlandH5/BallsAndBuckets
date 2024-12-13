@@ -1,17 +1,16 @@
 //
 //  BallsAndBuckets.swift
-//
-//
 //  Created by Harland Harrison on 12/6/24.
 //
-//  Use Terminal to execute:
+// Brute force solution to the "Balls & Buckets" Codility challenge.
+// This works for their examples but it is not O(n) scaling
+// and so is not practical for long strings.
+//
+//
+//  Use the Terminal app to execute:
+//
 //       cd  PATH
 //       swift BallsAndBuckets.swift
-//
-// Brute force solution to "Balls & Buckets" Codility challenge.
-// This works for their examples but it is not O(n) scaling
-// and so not practical for long strings.
-//
 
 
 import Foundation
@@ -112,9 +111,22 @@ func crashBuckets() {
     testOne(x)
 }
 
+var cmdArgs = CommandLine.arguments
+
 print("BallsAndBuckets.swift = A Brute Force solution")
-print("to the 'Balls and Buckets' Codility challenge.")
-testBuckets()
-//crashBuckets
+print("to the \"Balls and Buckets\" Codility challenge.")
+
+print("\n Example :  Swift  BallsAndBuckets.swift")
+print(" Example :  Swift  BallsAndBuckets.swift \"BB.B.BBB...\"\n")
 
 
+if  cmdArgs.count < 2 {
+    testBuckets()
+    //crashBuckets()
+    exit(0)
+}
+
+for i in 1...cmdArgs.count-1 {
+    testOne(cmdArgs[i])
+}
+exit(0)
